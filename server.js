@@ -37,6 +37,10 @@ app.post('/api/content', async (req, res) => {
         res.json({ message: "Content Saved Successfully" });
     } catch (error) {
         res.status(500).json({ error: error.message });
+
+        app.get('/', (req, res) => {
+    res.send('Casmura Backend is running successfully!');
+});
     }
 });
 
