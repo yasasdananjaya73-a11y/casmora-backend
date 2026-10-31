@@ -19,6 +19,11 @@ const ContentSchema = new mongoose.Schema({
 });
 const Content = mongoose.model('Content', ContentSchema);
 
+// මුල් පිටුව සඳහා (Cannot GET / දෝෂය මඟහරවා ගැනීමට)
+app.get('/', (req, res) => {
+    res.send('Casmura Backend is running successfully!');
+});
+
 // දත්ත ලබා ගැනීමේ API (GET)
 app.get('/api/content', async (req, res) => {
     try {
@@ -37,10 +42,6 @@ app.post('/api/content', async (req, res) => {
         res.json({ message: "Content Saved Successfully" });
     } catch (error) {
         res.status(500).json({ error: error.message });
-
-        app.get('/', (req, res) => {
-    res.send('Casmura Backend is running successfully!');
-});
     }
 });
 
