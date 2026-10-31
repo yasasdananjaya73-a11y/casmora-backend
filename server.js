@@ -45,5 +45,16 @@ app.post('/api/content', async (req, res) => {
     }
 });
 
+// දත්ත ලබා ගැනීමේ API (GET)
+app.get('/api/content', async (req, res) => {
+    console.log("API /api/content was hit!"); // මෙය එකතු කර බලන්න
+    try {
+        const data = await Content.find();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
